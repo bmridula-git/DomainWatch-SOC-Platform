@@ -1,0 +1,170 @@
+/* GENERAL PAGE STYLE */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0d1117;
+    color: #e6edf3;
+}
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #161b22;
+    border-bottom: 2px solid #30363d;
+}
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+.header p {
+    margin: 5px 0 0;
+    color: #8b949e;
+}
+/* STATUS BAR */
+.status-bar {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.status-pill {
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background-color: #21262d;
+    border: 1px solid #30363d;
+}
+.status-pill.online {
+    color: #2ea043;
+    border-color: #2ea043;
+}
+.status-pill.offline {
+    color: #ff8c00;
+    border-color: #ff8c00;
+}
+.target-pill {
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background-color: #21262d;
+    border: 1px solid #30363d;
+    color: #8b949e;
+}
+.target-pill strong {
+    color: #e6edf3;
+}
+/* SUMMARY CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.card {
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    transition: transform 0.15s ease;
+}
+.card h3 {
+    margin-bottom: 10px;
+}
+/* CARD COLORS */
+.critical {
+    border-left: 5px solid #ff4d4d;
+}
+.high {
+    border-left: 5px solid #ff8c00;
+}
+.medium {
+    border-left: 5px solid #ffd700;
+}
+.low {
+    border-left: 5px solid #2ea043;
+}
+/* pulse animation when a card's count updates */
+.card.pulse {
+    transform: scale(1.04);
+}
+/* TABLE SECTION */
+.table-section {
+    padding: 20px;
+}
+.table-section h2 {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.live-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2ea043;
+    display: inline-block;
+    box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.7);
+    animation: pulse-dot 1.6s infinite;
+}
+@keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(46, 160, 67, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 160, 67, 0); }
+}
+/* TABLE STYLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #161b22;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid #30363d;
+    text-align: left;
+    font-size: 14px;
+}
+th {
+    background-color: #21262d;
+}
+/* HOVER EFFECT */
+tr:hover {
+    background-color: #1f2937;
+    cursor: pointer;
+}
+/* new-row highlight when an alert streams in */
+tr.new-row {
+    animation: highlight-row 1.2s ease-out;
+}
+@keyframes highlight-row {
+    0% { background-color: rgba(46, 160, 67, 0.35); }
+    100% { background-color: transparent; }
+}
+/* severity badges in the alert column */
+.badge {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 6px;
+}
+.badge.CRITICAL { background-color: #ff4d4d; color: #1a0000; }
+.badge.HIGH { background-color: #ff8c00; color: #1a0f00; }
+.badge.MEDIUM { background-color: #ffd700; color: #1a1500; }
+.badge.LOW { background-color: #2ea043; color: #001a04; }
+/* INCIDENT PANEL */
+.incident {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #161b22;
+    border-top: 2px solid #30363d;
+}
+#incidentBox {
+    padding: 15px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+}

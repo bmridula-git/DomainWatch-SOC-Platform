@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC-XDR Lite Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <h1>🛡️ SOC-XDR Lite</h1>
+        <p>Security Operations Dashboard</p>
+        <div class="status-bar">
+            <span id="connectionStatus" class="status-pill offline">● Connecting...</span>
+            <span class="target-pill">Monitoring: <strong id="targetHost">-</strong></span>
+        </div>
+    </header>
+    <!-- SUMMARY CARDS -->
+    <section class="cards">
+        <div class="card critical">
+            <h3>Critical Alerts</h3>
+            <p id="criticalCount">0</p>
+        </div>
+        <div class="card high">
+            <h3>High Risk</h3>
+            <p id="highCount">0</p>
+        </div>
+        <div class="card medium">
+            <h3>Medium Risk</h3>
+            <p id="mediumCount">0</p>
+        </div>
+        <div class="card low">
+            <h3>Low Risk</h3>
+            <p id="lowCount">0</p>
+        </div>
+    </section>
+    <!-- ALERT TABLE -->
+    <section class="table-section">
+        <h2>Alert Monitoring <span id="liveDot" class="live-dot"></span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>ID</th>
+                    <th>Alert</th>
+                    <th>Source IP</th>
+                    <th>Target</th>
+                    <th>Risk Score</th>
+                    <th>MITRE</th>
+                </tr>
+            </thead>
+            <tbody id="alertTable">
+                <!-- JavaScript will fill this -->
+            </tbody>
+        </table>
+    </section>
+    <!-- INCIDENT PANEL -->
+    <section class="incident">
+        <h2>Incident Investigation</h2>
+        <div id="incidentBox">
+            <p>Select an alert to view details</p>
+        </div>
+    </section>
+    <!-- LINK JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>

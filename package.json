@@ -1,0 +1,16 @@
+{
+  "name": "soc-xdr-lite",
+  "version": "1.0.0",
+  "description": "SOC-XDR Lite real-time monitoring dashboard backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
