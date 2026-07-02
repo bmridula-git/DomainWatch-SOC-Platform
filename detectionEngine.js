@@ -1,7 +1,3 @@
-// detectionEngine.js
-// Simulates realistic security telemetry and applies detection logic on top of it,
-// similar in spirit to how a SIEM correlates raw events into alerts.
-
 const ATTACK_PROFILES = [
   {
     type: "Brute Force Attack",
@@ -68,8 +64,6 @@ const ATTACK_PROFILES = [
   }
 ];
 
-// Pool of "monitored" hosts. The configured TARGET_HOST (e.g. demo-server.in)
-// is always included so the dashboard can visibly point at your own domain.
 function buildHostPool(primaryTarget) {
   const pool = [
     primaryTarget,
@@ -83,7 +77,7 @@ function buildHostPool(primaryTarget) {
 }
 
 function randomIp() {
-  // Bias toward "external-looking" IPs for realism, occasionally internal RFC1918
+
   const internal = Math.random() < 0.3;
   if (internal) {
     return `192.168.1.${randInt(2, 254)}`;
@@ -112,17 +106,12 @@ class DetectionEngine {
     this.ipFailCounts = new Map(); // naive correlation state for brute-force detection
   }
 
-  // Generates one raw "event" and runs it through detection logic.
-  // Returns an alert object, or null if the event didn't trip any rule
-  // (kept low-probability so most ticks DO produce an alert for demo purposes).
   generateAlert() {
     const profile = ATTACK_PROFILES[randInt(0, ATTACK_PROFILES.length - 1)];
     const ip = randomIp();
     const target = this.hostPool[randInt(0, this.hostPool.length - 1)];
     const risk = randInt(profile.severityRange[0], profile.severityRange[1]);
 
-    // crude correlation: track repeated source IPs to bump brute-force confidence,
-    // mirroring how real SIEMs raise severity on repeated source behavior
     const failCount = this._bumpAndGetCount(ip);
 
     const ctx = {
