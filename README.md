@@ -56,10 +56,10 @@ The platform provides visibility into simulated security incidents including:
 │   └── script.js
 │
 ├── Backend
-│   └── app.js
+│   └── App.js
 │
 ├── Detection Engine
-│   └── detectionEngine.js
+│   └── Detectionengine.js
 │
 ├── Configuration
 │   └── package.json
@@ -71,10 +71,10 @@ The platform provides visibility into simulated security incidents including:
 ### Frontend Layer
 Provides the interactive SOC dashboard interface for visualizing security alerts, risk levels, attack information, and incident details.
 
-### Backend Layer (app.js)
+### Backend Layer (App.js)
 Handles application startup, server communication, and real-time event delivery between the backend and dashboard.
 
-### Detection Engine (detectionEngine.js)
+### Detection Engine (Detectionengine.js)
 Processes simulated security events, evaluates threat conditions, assigns severity levels, calculates risk scores, and maps detected activities to MITRE ATT&CK techniques.
 
 ### Package Configuration (package.json)
