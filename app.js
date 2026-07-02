@@ -9,7 +9,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const TARGET_HOST = process.env.TARGET_HOST || "demo-server.in";
+const TARGET_HOST = process.env.TARGET_HOST || "// ANY DOMAIN YOU OWN ENTER HERE";
 
 const TICK_INTERVAL_MS = parseInt(process.env.TICK_INTERVAL_MS, 10) || 4000;
 
