@@ -3,13 +3,13 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const WebSocket = require("ws");
-const { DetectionEngine } = require("./detectionEngine");
+const { DetectionEngine } = require("./Detectionengine");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const TARGET_HOST = process.env.TARGET_HOST || "// ANY DOMAIN YOU OWN ENTER HERE";
+const TARGET_HOST = process.env.TARGET_HOST || "// DOMAIN YOU OWN ENTER HERE";
 
 const TICK_INTERVAL_MS = parseInt(process.env.TICK_INTERVAL_MS, 10) || 4000;
 
