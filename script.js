@@ -1,7 +1,3 @@
-// script.js
-// Connects to the SOC-XDR backend over WebSocket for real-time alerts.
-// Falls back to REST polling if the socket can't connect (e.g. proxy blocks WS upgrade).
-
 let alertsData = [];
 let summaryCounts = { CRITICAL: 0, HIGH: 0, MEDIUM: 0, LOW: 0 };
 const MAX_ROWS = 50;
@@ -19,7 +15,6 @@ function setConnectionStatus(online) {
     }
 }
 
-// --- WEBSOCKET CONNECTION ---
 function connectWebSocket() {
     const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
     const wsUrl = `${protocol}//${window.location.host}/ws`;
@@ -44,15 +39,15 @@ function connectWebSocket() {
             alertsData.unshift(payload.alert);
             if (alertsData.length > MAX_ROWS) alertsData.pop();
             summaryCounts = payload.summary;
-            renderAll(payload.alert.id); // pass newest id to trigger row highlight
+            renderAll(payload.alert.id); 
         }
     });
 
     socket.addEventListener("close", () => {
         setConnectionStatus(false);
-        // Retry connection after a short delay
+       
         setTimeout(connectWebSocket, 3000);
-        // Meanwhile, keep the dashboard alive via REST polling
+       
         pollViaRest();
     });
 
@@ -61,10 +56,9 @@ function connectWebSocket() {
     });
 }
 
-// --- REST FALLBACK (used if WebSocket is unavailable) ---
 let restPollTimer = null;
 function pollViaRest() {
-    if (restPollTimer) return; // already polling
+    if (restPollTimer) return; 
     restPollTimer = setInterval(async () => {
         try {
            const res = await fetch("/api/alerts");
@@ -73,7 +67,7 @@ function pollViaRest() {
             summaryCounts = data.summary;
             targetHostEl.textContent = data.target;
             renderAll();
-            // If a later WebSocket reconnect succeeds, stop polling
+           
             if (connectionStatusEl.classList.contains("online")) {
                 clearInterval(restPollTimer);
                 restPollTimer = null;
@@ -84,7 +78,6 @@ function pollViaRest() {
     }, 5000);
 }
 
-// --- RENDER ---
 function renderAll(newAlertId = null) {
     updateSummaryCards();
     populateTable(newAlertId);
@@ -132,7 +125,6 @@ function populateTable(newAlertId) {
     });
 }
 
-// SHOW INCIDENT DETAILS
 function showIncident(alert) {
     const box = document.getElementById("incidentBox");
     const actions = alert.recommendedActions && alert.recommendedActions.length
@@ -154,5 +146,4 @@ function showIncident(alert) {
     `;
 }
 
-// --- INIT ---
 connectWebSocket();
