@@ -85,3 +85,7 @@ Defines project dependencies, scripts, and Node.js application configuration.
 DomainWatch demonstrates how modern Security Operations Centers (SOC) monitor, analyze, and prioritize security events in real time.
 
 It helps simulate how analysts investigate threats, assess severity, correlate suspicious behavior, and make incident response decisions using structured security intelligence.
+
+## Note
+
+This project was deployed and tested against a domain personally owned and operated by the author. 
