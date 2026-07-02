@@ -98,7 +98,7 @@ function severityFromRisk(risk) {
 
 class DetectionEngine {
   constructor({ targetHost }) {
-    this.targetHost = targetHost || "demo-server.in";
+    this.targetHost = targetHost || "// ANY DOMAIN YOU OWN ENTER HERE";
     this.hostPool = buildHostPool(this.targetHost);
     this.nextId = 1;
     this.alerts = [];       // rolling buffer of generated alerts
