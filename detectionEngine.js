@@ -98,12 +98,12 @@ function severityFromRisk(risk) {
 
 class DetectionEngine {
   constructor({ targetHost }) {
-    this.targetHost = targetHost || "// ANY DOMAIN YOU OWN ENTER HERE";
+    this.targetHost = targetHost || "// DOMAIN YOU OWN ENTER HERE";
     this.hostPool = buildHostPool(this.targetHost);
     this.nextId = 1;
-    this.alerts = [];       // rolling buffer of generated alerts
-    this.maxBuffer = 200;   // cap memory usage
-    this.ipFailCounts = new Map(); // naive correlation state for brute-force detection
+    this.alerts = [];       
+    this.maxBuffer = 200;   
+    this.ipFailCounts = new Map(); 
   }
 
   generateAlert() {
@@ -146,7 +146,7 @@ class DetectionEngine {
     const current = this.ipFailCounts.get(ip) || 0;
     const next = current + 1;
     this.ipFailCounts.set(ip, next);
-    // Decay occasionally so the map doesn't grow forever and counts stay "live"
+    
     if (this.ipFailCounts.size > 500) this.ipFailCounts.clear();
     return next;
   }
