@@ -141,6 +141,7 @@ function showIncident(alert) {
         <hr>
         <h4>Recommended Actions:</h4>
         <ul>
+        
             ${actions.map(a => `<li>${a}</li>`).join("")}
         </ul>
     `;
